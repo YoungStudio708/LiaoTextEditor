@@ -1,0 +1,62 @@
+﻿<Window x:Class="LiaoTextEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:LiaoTextEditor"
+        mc:Ignorable="d"
+        Title="廖文编辑" Height="450" Width="800" WindowStyle="ThreeDBorderWindow" Background="{x:Null}" BorderBrush="Red" Icon="lab11.png">
+    <Grid>
+        <Menu VerticalAlignment="Top" Height="25" Background="#FF4377E6">
+            <MenuItem Header="File" Height="25">
+                <MenuItem Header="Open" Click="Open_Click"/>
+                <MenuItem Header="Save" Click="Save_Click"/>
+                <MenuItem Header="Save as" Click="SaveAs_Click"/>
+                <MenuItem Header="Save and exit" Click="Save_Exit_Click"/>
+                <MenuItem Header="Exit" Click="Exit"/>
+            </MenuItem>
+
+
+            <MenuItem Header="Edit">
+                <MenuItem Header="Cut" Command="Cut" />
+                <MenuItem Header="Copy" Command="Copy" />
+                <MenuItem Header="Paste" Command="Paste" />
+            </MenuItem>
+
+
+            <MenuItem Header="Format">
+                <MenuItem Command="EditingCommands.ToggleBold" Header="Bold" Name="btnBold"/>
+                <MenuItem Command="EditingCommands.ToggleItalic" Header="Italic" Name="btnItalic"/>
+                <MenuItem Command="EditingCommands.ToggleUnderline" Header="Underline" Name="btnUnderline"/>
+            </MenuItem>
+
+            <MenuItem Header="Align">
+                <MenuItem Command="EditingCommands.AlignLeft" />
+                <MenuItem Command="EditingCommands.AlignCenter" />
+                <MenuItem Command="EditingCommands.AlignRight" />
+            </MenuItem>
+
+            <MenuItem Header="Lists">
+                <MenuItem Command="EditingCommands.ToggleBullets" Header="Marked"/>
+                <MenuItem Command="EditingCommands.ToggleNumbering" Header="Numbered" />
+            </MenuItem>
+            <Button  Click="Print_Click" Content="Print" Height="20" Width="33"/>
+
+            <ComboBox x:Name="Font_Family" Height="25" VerticalAlignment="Top" SelectionChanged="Font_Family_SelectionChanged" Width="200" Background="#FF184776"/>
+            <ComboBox x:Name="Text_Size" Height="25" VerticalAlignment="Top"  SelectionChanged="Text_Size_SelectionChanged" RenderTransformOrigin="1.829,1.082" Width="48"/>
+            <ComboBox x:Name="Indent_Size" Height="25" VerticalAlignment="Top"  SelectionChanged="Indent_Size_SelectionChanged" Width="51"/>
+            <xctk:ColorPicker  SelectedColorChanged="ColorPicker_SelectedColorChanged" Width="50" ToolBar.OverflowMode="Always"></xctk:ColorPicker>
+            <xctk:ColorPicker SelectedColorChanged="ColorPicker_SelectedColorChanged_1" Width="50" ToolBar.OverflowMode="Always"></xctk:ColorPicker>
+        </Menu>
+
+        <RichTextBox x:Name="Texting"  Margin="0,25,0,0" FontFamily="Times New Roman" FontSize="14" Foreground="#FFBDBDBD" Background="#FF2C2C2C" OpacityMask="#FF4E7FA8">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Background="#FF3C3C3C"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        
+    </Grid>
+</Window>
